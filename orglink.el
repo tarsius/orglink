@@ -5,9 +5,9 @@
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Created: 20130501
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Status: beta
-;; Package-Requires: ((org "8.0"))
+;; Package-Requires: ((dash "1.3.2") (org "8.0"))
 ;; Homepage: http://github.com/tarsius/orglink
 ;; Keywords: hypertext
 
