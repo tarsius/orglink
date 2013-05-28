@@ -174,8 +174,8 @@ On the links the following commands are available:
                       "\\(?:\\sw+\\)")
                     "?" s)
             nil t)
-           (setq pos (match-beginning 0))))
-    (goto-char pos)))
+           (setq pos (match-beginning 0))
+           (goto-char pos)))))
 
 (provide 'orglink)
 ;; Local Variables:
