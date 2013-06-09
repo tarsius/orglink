@@ -29,8 +29,9 @@
 
 ;;; Commentary:
 
-;; This library implements support for some Org Mode link in other
-;; major modes.  Links can be opened and edited like in Org Mode.
+;; This library implements support for some Org Mode link types in
+;; other major modes.  Links can be opened and edited like in Org
+;; Mode.
 
 ;; To use enable `global-orglink-mode' and customize
 ;; `orglink-activate-in-modes'.  Or use the buffer local
