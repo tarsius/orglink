@@ -129,7 +129,7 @@ On the links the following commands are available:
          (remove-hook 'org-open-link-functions
                       'orglink-heading-link-search t)
          (font-lock-remove-keywords nil (orglink-font-lock-keywords t))
-         (org-remove-from-invisibility-spec '(org-link))
+         (remove-from-invisibility-spec '(org-link))
          (kill-local-variable 'org-descriptive-links)
          (kill-local-variable 'font-lock-unfontify-region-function)
          (kill-local-variable 'org-mouse-map)))
