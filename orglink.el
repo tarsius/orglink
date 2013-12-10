@@ -55,6 +55,8 @@
 (require 'dash)
 (require 'org)
 
+(defvar hl-todo-keyword-faces)
+
 (defgroup orglink nil
   "Use Org Mode links in other modes."
   :prefix "orglink-"
@@ -156,8 +158,6 @@ On the links the following commands are available:
            '((org-activate-angle-links (0 'org-link t))))
     ,@(and (or all (memq 'plain orglink-activate-links))
            '((org-activate-plain-links (0 'org-link t))))))
-
-(defvar hl-todo-keyword-faces)
 
 (defun orglink-heading-link-search (s)
   (let (case-fold-search pos)
