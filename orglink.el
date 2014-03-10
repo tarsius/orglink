@@ -51,14 +51,7 @@
 ;;; Code:
 
 (require 'dash)
-
-;; Defer loading `org' to speedup Emacs startup when
-;; `global-orglink-mode' is called in the init file.
-(defvar org-descriptive-links)
-(declare-function org-load-modules-maybe 'org)
-(declare-function org-remove-from-invisibility-spec 'org-compat)
-(declare-function org-set-local 'org-macs)
-(declare-function org-unfontify-region 'org)
+(require 'org)
 
 (defvar hl-todo-keyword-faces)
 (defvar outline-minor-mode)
@@ -125,7 +118,6 @@ On the links the following commands are available:
   (when (derived-mode-p 'org-mode)
     (error "Orglink Mode doesn't make sense in Org Mode"))
   (cond (orglink-mode
-         (require 'org)
          (org-load-modules-maybe)
          (add-hook 'org-open-link-functions
                    'orglink-heading-link-search nil t)
@@ -151,8 +143,7 @@ On the links the following commands are available:
   orglink-mode turn-on-orglink-mode-if-desired)
 
 (defun turn-on-orglink-mode-if-desired ()
-  (when (and (not (equal (buffer-name) "*scratch*"))
-             (apply 'derived-mode-p orglink-activate-in-modes))
+  (when (apply 'derived-mode-p orglink-activate-in-modes)
     (orglink-mode 1)))
 
 (defun orglink-unfontify-region (beg end)
