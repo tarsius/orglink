@@ -59,7 +59,7 @@
 (defgroup orglink nil
   "Use Org Mode links in other modes."
   :prefix "orglink-"
-  :group 'convenience)
+  :group 'font-lock-extra-types)
 
 (defcustom orglink-activate-links '(bracket angle plain)
   "Types of links that should be activated by `orglink-mode'.
