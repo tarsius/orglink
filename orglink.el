@@ -168,10 +168,7 @@ On the links the following commands are available:
       (and (or outline-minor-mode
                (derived-mode-p 'emacs-lisp-mode))
            (re-search-forward
-            (concat "^"
-                    (if outline-minor-mode
-                        outline-regexp
-                      ";;;+ ")
+            (concat "^" outline-regexp
                     (if (bound-and-true-p hl-todo-mode)
                         (regexp-opt (mapcar 'car hl-todo-keyword-faces))
                       "\\(?:\\sw+\\)")
