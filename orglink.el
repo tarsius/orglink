@@ -1,7 +1,7 @@
 ;;; orglink.el --- use Org Mode links in other modes
 
 ;; Copyright (C) 2004-2013  Free Software Foundation, Inc.
-;; Copyright (C) 2013  Jonas Bernoulli
+;; Copyright (C) 2013-2014  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Created: 20130501
