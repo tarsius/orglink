@@ -137,8 +137,8 @@ On the links the following commands are available:
          (kill-local-variable 'font-lock-unfontify-region-function)
          (kill-local-variable 'org-mouse-map)))
   (when (called-interactively-p 'any)
-    (if (fboundp 'font-lock-ensure)
-        (font-lock-ensure)
+    (if (fboundp 'font-lock-flush)
+        (font-lock-flush)
       (with-no-warnings
         (font-lock-fontify-buffer)))))
 
