@@ -122,12 +122,12 @@ On the links the following commands are available:
          (add-hook 'org-open-link-functions
                    'orglink-heading-link-search nil t)
          (font-lock-add-keywords nil (orglink-font-lock-keywords) t)
-         (org-set-local 'org-descriptive-links org-descriptive-links)
+         (setq-local org-descriptive-links org-descriptive-links)
          (when org-descriptive-links
            (add-to-invisibility-spec '(org-link)))
-         (org-set-local 'font-lock-unfontify-region-function
-                        'orglink-unfontify-region)
-         (org-set-local 'org-mouse-map orglink-mouse-map))
+         (setq-local font-lock-unfontify-region-function
+                     'orglink-unfontify-region)
+         (setq-local org-mouse-map orglink-mouse-map))
         (t
          (remove-hook 'org-open-link-functions
                       'orglink-heading-link-search t)
