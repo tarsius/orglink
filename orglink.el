@@ -1,11 +1,11 @@
 ;;; orglink.el --- use Org Mode links in other modes
 
 ;; Copyright (C) 2004-2013  Free Software Foundation, Inc.
-;; Copyright (C) 2013-2014  Jonas Bernoulli
+;; Copyright (C) 2013-2016  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Created: 20130501
-;; Package-Requires: ((dash "1.3.2") (org "8.0"))
+;; Package-Requires: ((emacs "24.3") (dash "2.12.1") (org "8.3"))
 ;; Homepage: http://github.com/tarsius/orglink
 ;; Keywords: hypertext
 
