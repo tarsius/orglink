@@ -170,51 +170,50 @@ On the links the following commands are available:
 
 (defun orglink-activate-bracket-links (limit)
   "Add text properties for bracketed links."
-  (if (and (re-search-forward org-bracket-link-regexp limit t)
-           (not (org-in-src-block-p)))
-      (let* ((hl (org-match-string-no-properties 1))
-             (help (concat "LINK: " (save-match-data (org-link-unescape hl))))
-             (ip (org-maybe-intangible
-                  (list 'invisible 'org-link
-                        'keymap org-mouse-map 'mouse-face 'highlight
-                        'font-lock-multiline t 'help-echo help
-                        'htmlize-link `(:uri ,hl))))
-             (vp (list 'keymap org-mouse-map 'mouse-face 'highlight
-                       'font-lock-multiline t 'help-echo help
-                       'htmlize-link `(:uri ,hl))))
-        ;; We need to remove the invisible property here.  Table narrowing
-        ;; may have made some of this invisible.
-        (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
-        (remove-text-properties (match-beginning 0) (match-end 0)
-                                '(invisible nil))
-        (if (match-end 3)
-            (progn
-              (add-text-properties (match-beginning 0) (match-beginning 3) ip)
-              (org-rear-nonsticky-at (match-beginning 3))
-              (add-text-properties (match-beginning 3) (match-end 3) vp)
-              (org-rear-nonsticky-at (match-end 3))
-              (add-text-properties (match-end 3) (match-end 0) ip)
-              (org-rear-nonsticky-at (match-end 0)))
-          (add-text-properties (match-beginning 0) (match-beginning 1) ip)
-          (org-rear-nonsticky-at (match-beginning 1))
-          (add-text-properties (match-beginning 1) (match-end 1) vp)
-          (org-rear-nonsticky-at (match-end 1))
-          (add-text-properties (match-end 1) (match-end 0) ip)
-          (org-rear-nonsticky-at (match-end 0)))
-        t)))
+  (when (and (re-search-forward org-bracket-link-regexp limit t)
+             (not (org-in-src-block-p)))
+    (let* ((hl (org-match-string-no-properties 1))
+           (help (concat "LINK: " (save-match-data (org-link-unescape hl))))
+           (ip (org-maybe-intangible
+                (list 'invisible 'org-link
+                      'keymap org-mouse-map 'mouse-face 'highlight
+                      'font-lock-multiline t 'help-echo help
+                      'htmlize-link `(:uri ,hl))))
+           (vp (list 'keymap org-mouse-map 'mouse-face 'highlight
+                     'font-lock-multiline t 'help-echo help
+                     'htmlize-link `(:uri ,hl))))
+      ;; We need to remove the invisible property here.  Table narrowing
+      ;; may have made some of this invisible.
+      (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
+      (remove-text-properties (match-beginning 0) (match-end 0)
+                              '(invisible nil))
+      (if (match-end 3)
+          (progn
+            (add-text-properties (match-beginning 0) (match-beginning 3) ip)
+            (org-rear-nonsticky-at (match-beginning 3))
+            (add-text-properties (match-beginning 3) (match-end 3) vp)
+            (org-rear-nonsticky-at (match-end 3))
+            (add-text-properties (match-end 3) (match-end 0) ip)
+            (org-rear-nonsticky-at (match-end 0)))
+        (add-text-properties (match-beginning 0) (match-beginning 1) ip)
+        (org-rear-nonsticky-at (match-beginning 1))
+        (add-text-properties (match-beginning 1) (match-end 1) vp)
+        (org-rear-nonsticky-at (match-end 1))
+        (add-text-properties (match-end 1) (match-end 0) ip)
+        (org-rear-nonsticky-at (match-end 0)))
+      t)))
 
 (defun orglink-activate-angle-links (limit)
   "Add text properties for angle links."
-  (if (and (re-search-forward org-angle-link-re limit t)
-           (not (org-in-src-block-p)))
-      (progn
-        (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
-        (add-text-properties (match-beginning 0) (match-end 0)
-                             (list 'mouse-face 'highlight
-                                   'keymap org-mouse-map
-                                   'font-lock-multiline t))
-        (org-rear-nonsticky-at (match-end 0))
-        t)))
+  (when (and (re-search-forward org-angle-link-re limit t)
+             (not (org-in-src-block-p)))
+    (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
+    (add-text-properties (match-beginning 0) (match-end 0)
+                         (list 'mouse-face 'highlight
+                               'keymap org-mouse-map
+                               'font-lock-multiline t))
+    (org-rear-nonsticky-at (match-end 0))
+    t))
 
 (defun orglink-activate-plain-links (limit)
   "Add link properties for plain links."
