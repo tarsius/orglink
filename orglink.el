@@ -171,6 +171,7 @@ On the links the following commands are available:
 (defun orglink-activate-bracket-links (limit)
   "Add text properties for bracketed links."
   (when (and (re-search-forward org-bracket-link-regexp limit t)
+             (orglink-inside-comment-or-docstring-p)
              (not (org-in-src-block-p)))
     (let* ((hl (org-match-string-no-properties 1))
            (help (concat "LINK: " (save-match-data (org-link-unescape hl))))
@@ -206,6 +207,7 @@ On the links the following commands are available:
 (defun orglink-activate-angle-links (limit)
   "Add text properties for angle links."
   (when (and (re-search-forward org-angle-link-re limit t)
+             (orglink-inside-comment-or-docstring-p)
              (not (org-in-src-block-p)))
     (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
     (add-text-properties (match-beginning 0) (match-end 0)
@@ -218,6 +220,7 @@ On the links the following commands are available:
 (defun orglink-activate-plain-links (limit)
   "Add link properties for plain links."
   (when (and (re-search-forward org-plain-link-re limit t)
+             (orglink-inside-comment-or-docstring-p)
              (not (org-in-src-block-p)))
     (let ((face (get-text-property (max (1- (match-beginning 0)) (point-min))
                                    'face))
@@ -231,6 +234,10 @@ On the links the following commands are available:
                                    'keymap org-mouse-map))
         (org-rear-nonsticky-at (match-end 0))
         t))))
+
+(defun orglink-inside-comment-or-docstring-p ()
+  (and (nth 8 (syntax-ppss))
+       (not (eq (get-text-property (point) 'face) 'font-lock-string-face))))
 
 (defun orglink-heading-link-search (s)
   (let (case-fold-search pos)
