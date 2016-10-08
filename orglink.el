@@ -1,4 +1,4 @@
-;;; orglink.el --- use Org Mode links in other modes
+;;; orglink.el --- use Org Mode links in other modes  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2004-2013  Free Software Foundation, Inc.
 ;; Copyright (C) 2013-2016  Jonas Bernoulli
