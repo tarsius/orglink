@@ -6,7 +6,7 @@
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Created: 20130501
 ;; Package-Requires: ((emacs "24.3") (dash "2.12.1") (org "8.3"))
-;; Homepage: http://github.com/tarsius/orglink
+;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypertext
 
 ;; This file is not part of Org Mode.
@@ -41,7 +41,7 @@
 ;;   <mailto:jonas@bernoul.li>
 ;;   man:info
 ;;   <info:man>
-;;   http://github.com/tarsius/orglink
+;;   https://github.com/tarsius/orglink
 ;;   TODO support Emacs Lisp xref links like (in) `help-mode'.
 ;;   TODO support footnote.el links (only)
 
