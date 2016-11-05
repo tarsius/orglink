@@ -173,13 +173,12 @@ On the links the following commands are available:
   (when (and (re-search-forward org-bracket-link-regexp limit t)
              (orglink-inside-comment-or-docstring-p)
              (not (org-in-src-block-p)))
-    (let* ((hl (org-match-string-no-properties 1))
+    (let* ((hl (match-string-no-properties 1))
            (help (concat "LINK: " (save-match-data (org-link-unescape hl))))
-           (ip (org-maybe-intangible
-                (list 'invisible 'org-link
-                      'keymap org-mouse-map 'mouse-face 'highlight
-                      'font-lock-multiline t 'help-echo help
-                      'htmlize-link `(:uri ,hl))))
+           (ip (list 'invisible 'org-link
+                     'keymap org-mouse-map 'mouse-face 'highlight
+                     'font-lock-multiline t 'help-echo help
+                     'htmlize-link `(:uri ,hl)))
            (vp (list 'keymap org-mouse-map 'mouse-face 'highlight
                      'font-lock-multiline t 'help-echo help
                      'htmlize-link `(:uri ,hl))))
@@ -224,7 +223,7 @@ On the links the following commands are available:
              (not (org-in-src-block-p)))
     (let ((face (get-text-property (max (1- (match-beginning 0)) (point-min))
                                    'face))
-          (link (org-match-string-no-properties 0)))
+          (link (match-string-no-properties 0)))
       (unless (if (consp face) (memq 'org-tag face) (eq 'org-tag face))
         (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
         (add-text-properties (match-beginning 0) (match-end 0)
