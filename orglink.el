@@ -1,11 +1,11 @@
 ;;; orglink.el --- use Org Mode links in other modes  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2004-2013  Free Software Foundation, Inc.
-;; Copyright (C) 2013-2018  Jonas Bernoulli
+;; Copyright (C) 2013-2019  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Created: 20130501
-;; Package-Requires: ((emacs "24.3") (dash "2.12.1") (org "8.3"))
+;; Package-Requires: ((emacs "24.3") (dash "2.12.1") (org "9.3"))
 ;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypertext
 
@@ -122,8 +122,8 @@ On the links the following commands are available:
          (add-hook 'org-open-link-functions
                    'orglink-heading-link-search nil t)
          (font-lock-add-keywords nil (orglink-font-lock-keywords) t)
-         (setq-local org-descriptive-links org-descriptive-links)
-         (when org-descriptive-links
+         (setq-local org-link-descriptive org-link-descriptive)
+         (when org-link-descriptive
            (add-to-invisibility-spec '(org-link)))
          (setq-local font-lock-unfontify-region-function
                      'orglink-unfontify-region)
@@ -133,7 +133,7 @@ On the links the following commands are available:
                       'orglink-heading-link-search t)
          (font-lock-remove-keywords nil (orglink-font-lock-keywords t))
          (remove-from-invisibility-spec '(org-link))
-         (kill-local-variable 'org-descriptive-links)
+         (kill-local-variable 'org-link-descriptive)
          (kill-local-variable 'font-lock-unfontify-region-function)
          (kill-local-variable 'org-mouse-map)))
   (when font-lock-mode
@@ -170,7 +170,7 @@ On the links the following commands are available:
 
 (defun orglink-activate-bracket-links (limit)
   "Add text properties for bracketed links."
-  (when (and (re-search-forward org-bracket-link-regexp limit t)
+  (when (and (re-search-forward org-link-bracket-re limit t)
              (orglink-inside-comment-or-docstring-p)
              (not (org-in-src-block-p)))
     (let* ((hl (match-string-no-properties 1))
@@ -205,7 +205,7 @@ On the links the following commands are available:
 
 (defun orglink-activate-angle-links (limit)
   "Add text properties for angle links."
-  (when (and (re-search-forward org-angle-link-re limit t)
+  (when (and (re-search-forward org-link-angle-re limit t)
              (orglink-inside-comment-or-docstring-p)
              (not (org-in-src-block-p)))
     (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
@@ -218,7 +218,7 @@ On the links the following commands are available:
 
 (defun orglink-activate-plain-links (limit)
   "Add link properties for plain links."
-  (when (and (re-search-forward org-plain-link-re limit t)
+  (when (and (re-search-forward org-link-plain-re limit t)
              (orglink-inside-comment-or-docstring-p)
              (not (org-in-src-block-p)))
     (let ((face (get-text-property (max (1- (match-beginning 0)) (point-min))
