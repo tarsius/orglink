@@ -1,10 +1,9 @@
 ;;; orglink.el --- use Org Mode links in other modes  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2004-2013  Free Software Foundation, Inc.
-;; Copyright (C) 2013-2019  Jonas Bernoulli
+;; Copyright (C) 2013-2020  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
-;; Created: 20130501
 ;; Package-Requires: ((emacs "24.3") (dash "2.12.1") (org "9.3"))
 ;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypertext
@@ -42,11 +41,6 @@
 ;;   man:info
 ;;   <info:man>
 ;;   https://github.com/tarsius/orglink
-;;   TODO support Emacs Lisp xref links like (in) `help-mode'.
-;;   TODO support footnote.el links (only)
-
-;; If you like this you might also like `orgstruct-mode', [[https://github.com/tj64/outshine][outshine]],
-;; [[https://github.com/tarsius/hl-todo][hl-todo]], and [[https://github.com/tarsius/org-elisp-help][org-elisp-help]].
 
 ;;; Code:
 
