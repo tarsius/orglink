@@ -4,7 +4,7 @@
 ;; Copyright (C) 2013-2020  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
-;; Package-Requires: ((emacs "24.3") (dash "2.12.1") (org "9.3"))
+;; Package-Requires: ((emacs "24.3") (org "9.3") (seq "2.20"))
 ;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypertext
 
@@ -44,8 +44,8 @@
 
 ;;; Code:
 
-(require 'dash)
 (require 'org)
+(require 'seq)
 
 (defvar hl-todo-keyword-faces)
 (defvar outline-minor-mode)
@@ -68,7 +68,8 @@ Changes to this variable only become effective after restarting
 `orglink-mode', which has to be done separately in each buffer."
   :group 'orglink
   :safe (lambda (v)
-          (and (listp v) (-all? 'symbolp v)))
+          (and (listp v)
+               (seq-every-p #'symbolp v)))
   :type '(set :greedy t
               (const :tag "Double bracket links" bracket)
               (const :tag "Angular bracket links" angle)
