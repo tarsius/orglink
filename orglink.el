@@ -167,9 +167,7 @@ On the links the following commands are available:
 
 (defun orglink-activate-bracket-links (limit)
   "Add text properties for bracketed links."
-  (when (and (re-search-forward org-link-bracket-re limit t)
-             (orglink-inside-comment-or-docstring-p)
-             (not (org-in-src-block-p)))
+  (when (orglink-match org-link-bracket-re limit)
     (let* ((hl (match-string-no-properties 1))
            (help (concat "LINK: " (save-match-data (org-link-unescape hl))))
            (ip (list 'invisible 'org-link
@@ -202,9 +200,7 @@ On the links the following commands are available:
 
 (defun orglink-activate-angle-links (limit)
   "Add text properties for angle links."
-  (when (and (re-search-forward org-link-angle-re limit t)
-             (orglink-inside-comment-or-docstring-p)
-             (not (org-in-src-block-p)))
+  (when (orglink-match org-link-angle-re limit)
     (org-remove-flyspell-overlays-in (match-beginning 0) (match-end 0))
     (add-text-properties (match-beginning 0) (match-end 0)
                          (list 'mouse-face 'highlight
@@ -215,9 +211,7 @@ On the links the following commands are available:
 
 (defun orglink-activate-plain-links (limit)
   "Add link properties for plain links."
-  (when (and (re-search-forward org-link-plain-re limit t)
-             (orglink-inside-comment-or-docstring-p)
-             (not (org-in-src-block-p)))
+  (when (orglink-match org-link-plain-re limit)
     (let ((face (get-text-property (max (1- (match-beginning 0)) (point-min))
                                    'face))
           (link (match-string-no-properties 0)))
@@ -230,6 +224,11 @@ On the links the following commands are available:
                                    'keymap org-mouse-map))
         (org-rear-nonsticky-at (match-end 0))
         t))))
+
+(defun orglink-match (regexp limit)
+  (and (re-search-forward regexp limit t)
+       (orglink-inside-comment-or-docstring-p)
+       (not (org-in-src-block-p))))
 
 (defun orglink-inside-comment-or-docstring-p ()
   (and (nth 8 (syntax-ppss))
