@@ -77,6 +77,13 @@ Changes to this variable only become effective after restarting
               (const :tag "Angular bracket links" angle)
               (const :tag "Plain text links" plain)))
 
+(defcustom orglink-match-anywhere nil
+  "Whether to match anywhere or just in comments and doc-strings."
+  :package-version '(orglink . "1.2.0")
+  :group 'orglink
+  :safe 'booleanp
+  :type 'boolean)
+
 (defcustom orglink-activate-in-modes '(emacs-lisp-mode)
   "Major modes in which `orglink-mode' should be activated.
 This is used by `global-orglink-mode'.  Note that `orglink-mode'
@@ -227,7 +234,8 @@ On the links the following commands are available:
 
 (defun orglink-match (regexp limit)
   (and (re-search-forward regexp limit t)
-       (orglink-inside-comment-or-docstring-p)
+       (or orglink-match-anywhere
+           (orglink-inside-comment-or-docstring-p))
        (not (org-in-src-block-p))))
 
 (defun orglink-inside-comment-or-docstring-p ()
