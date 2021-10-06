@@ -1,12 +1,14 @@
 ;;; orglink.el --- use Org Mode links in other modes  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2004-2013  Free Software Foundation, Inc.
-;; Copyright (C) 2013-2020  Jonas Bernoulli
+;; Copyright (C) 2013-2021  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
-;; Package-Requires: ((emacs "24.3") (org "9.3") (seq "2.20"))
 ;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypertext
+
+;; Package-Requires: ((emacs "24.3") (org "9.3") (seq "2.20"))
+;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;; This file is not part of Org Mode.
 ;; This file is not part of GNU Emacs.
