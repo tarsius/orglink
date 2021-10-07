@@ -155,8 +155,10 @@ On the links the following commands are available:
   orglink-mode turn-on-orglink-mode-if-desired)
 
 (defun turn-on-orglink-mode-if-desired ()
-  (when (apply 'derived-mode-p orglink-activate-in-modes)
-    (orglink-mode 1)))
+  (cond ((derived-mode-p 'org-mode)
+         (message "Refusing to turn on `orglink-mode' in `org-mode'"))
+        ((apply 'derived-mode-p orglink-activate-in-modes)
+         (orglink-mode 1))))
 
 (defun orglink-unfontify-region (beg end)
   (org-unfontify-region beg end)
