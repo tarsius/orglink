@@ -120,6 +120,7 @@ On the links the following commands are available:
 \\{orglink-mouse-map}"
   :lighter orglink-mode-lighter
   (when (derived-mode-p 'org-mode)
+    (setq orglink-mode nil)
     (error "Orglink Mode doesn't make sense in Org Mode"))
   (cond (orglink-mode
          (org-load-modules-maybe)
@@ -156,7 +157,11 @@ On the links the following commands are available:
 
 (defun turn-on-orglink-mode-if-desired ()
   (cond ((derived-mode-p 'org-mode)
-         (message "Refusing to turn on `orglink-mode' in `org-mode'"))
+         ;; `org-mode' derives from `outline-mode', which derives
+         ;; from `text-mode'.  Only warn if `org-mode' itself is
+         ;; a member of `orglink-activate-in-modes'.
+         (when (memq 'org-mode orglink-activate-in-modes)
+           (message "Refusing to turn on `orglink-mode' in `org-mode'")))
         ((apply 'derived-mode-p orglink-activate-in-modes)
          (orglink-mode 1))))
 
