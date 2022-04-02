@@ -84,7 +84,7 @@ Changes to this variable only become effective after restarting
   "Whether to match anywhere or just in comments and doc-strings."
   :package-version '(orglink . "1.2.0")
   :group 'orglink
-  :safe 'booleanp
+  :safe #'booleanp
   :type 'boolean)
 
 (defcustom orglink-activate-in-modes '(emacs-lisp-mode)
@@ -104,10 +104,10 @@ load `org' at startup (because that would take a long time)."
 (defvar orglink-mouse-map
   (let ((map (make-sparse-keymap)))
     (define-key map [follow-link] 'mouse-face)
-    (define-key map [mouse-2]     'org-open-at-point-global)
-    (define-key map [return]      'org-open-at-point-global)
-    (define-key map [tab]         'org-next-link)
-    (define-key map [backtab]     'org-previous-link)
+    (define-key map [mouse-2]     #'org-open-at-point-global)
+    (define-key map [return]      #'org-open-at-point-global)
+    (define-key map [tab]         #'org-next-link)
+    (define-key map [backtab]     #'org-previous-link)
     map)
   "Keymap used for `orglink-mode' link buttons.
 The keymap stored in this variable is actually used by setting
@@ -128,17 +128,17 @@ On the links the following commands are available:
   (cond (orglink-mode
          (org-load-modules-maybe)
          (add-hook 'org-open-link-functions
-                   'orglink-heading-link-search nil t)
+                   #'orglink-heading-link-search nil t)
          (font-lock-add-keywords nil '((orglink-activate-links)) t)
          (setq-local org-link-descriptive org-link-descriptive)
          (when org-link-descriptive
            (add-to-invisibility-spec '(org-link)))
          (setq-local font-lock-unfontify-region-function
-                     'orglink-unfontify-region)
+                     #'orglink-unfontify-region)
          (setq-local org-mouse-map orglink-mouse-map))
         (t
          (remove-hook 'org-open-link-functions
-                      'orglink-heading-link-search t)
+                      #'orglink-heading-link-search t)
          (font-lock-remove-keywords nil '((orglink-activate-links)))
          (remove-from-invisibility-spec '(org-link))
          (kill-local-variable 'org-link-descriptive)
@@ -165,7 +165,7 @@ On the links the following commands are available:
          ;; a member of `orglink-activate-in-modes'.
          (when (memq 'org-mode orglink-activate-in-modes)
            (message "Refusing to turn on `orglink-mode' in `org-mode'")))
-        ((apply 'derived-mode-p orglink-activate-in-modes)
+        ((apply #'derived-mode-p orglink-activate-in-modes)
          (orglink-mode 1))))
 
 (defun orglink-unfontify-region (beg end)
