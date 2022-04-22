@@ -7,7 +7,7 @@
 ;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypertext
 
-;; Package-Requires: ((emacs "25.1") (org "9.5") (seq "2.23"))
+;; Package-Requires: ((emacs "25.1") (compat "28.1.1.0") (org "9.5") (seq "2.23"))
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;; This file is not part of Org Mode.
@@ -46,6 +46,7 @@
 
 ;;; Code:
 
+(require 'compat)
 (require 'seq)
 
 (require 'org)
