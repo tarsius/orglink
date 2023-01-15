@@ -17,3 +17,8 @@ To use enable ~global-orglink-mode~ and customize
   <info:man>
   https://github.com/tarsius/orglink
 #+end_src
+
+#+html: <br><br>
+#+html: <a href="https://github.com/tarsius/orglink/actions/workflows/compile.yml"><img alt="Compile" src="https://github.com/tarsius/orglink/actions/workflows/compile.yml/badge.svg"/></a>
+#+html: <a href="https://stable.melpa.org/#/orglink"><img alt="MELPA Stable" src="https://stable.melpa.org/packages/orglink-badge.svg"/></a>
+#+html: <a href="https://melpa.org/#/orglink"><img alt="MELPA" src="https://melpa.org/packages/orglink-badge.svg"/></a>
