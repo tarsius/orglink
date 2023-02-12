@@ -104,18 +104,16 @@ load `org' at startup (because that would take a long time)."
   :type '(choice (const :tag "none" nil)
                  string))
 
-(defvar orglink-mouse-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map [follow-link] 'mouse-face)
-    (define-key map [mouse-2]     #'org-open-at-point-global)
-    (define-key map [return]      #'org-open-at-point-global)
-    (define-key map [tab]         #'org-next-link)
-    (define-key map [backtab]     #'org-previous-link)
-    map)
-  "Keymap used for `orglink-mode' link buttons.
+(defvar-keymap orglink-mouse-map
+  :doc "Keymap used for `orglink-mode' link buttons.
 The keymap stored in this variable is actually used by setting
 the buffer local value of variable `org-mouse-map' to it's
-value when `orglink-mode' is turned on.")
+value when `orglink-mode' is turned on."
+  "<follow-link>"  'mouse-face
+  "<mouse-2>"     #'org-open-at-point-global
+  "<return>"      #'org-open-at-point-global
+  "<tab>"         #'org-next-link
+  "<backtab>"     #'org-previous-link)
 
 ;;;###autoload
 (define-minor-mode orglink-mode
