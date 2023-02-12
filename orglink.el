@@ -9,7 +9,7 @@
 
 ;; Package-Requires: (
 ;;     (emacs "25.1")
-;;     (compat "28.1.1.0")
+;;     (compat "29.1.3.4")
 ;;     (org "9.5")
 ;;     (seq "2.23"))
 
