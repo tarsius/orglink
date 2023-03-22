@@ -53,6 +53,7 @@
 
 (require 'org)
 (require 'org-element)
+(require 'org-lint)
 
 (defvar hl-todo-keyword-faces)
 (defvar outline-minor-mode)
@@ -264,6 +265,25 @@ On the links the following commands are available:
             nil t)
            (setq pos (match-beginning 0))
            (goto-char pos)))))
+
+;;;###autoload
+(defun orglink-lint ()
+    "Check current buffer for orglink-mode related syntax mistakes.
+
+Uses the `link' category of `org-lint' linters."
+    (interactive)
+    (unless (bound-and-true-p orglink-mode) (user-error "orglink-mode not active"))
+    (when (called-interactively-p 'any)
+      (message "orglink linting process starting..."))
+    (let ((checkers
+	   (cl-remove-if-not
+	    (lambda (c)
+	      (assoc-string 'link (org-lint-checker-categories c)))
+	    org-lint--checkers)))
+      (if (not (called-interactively-p 'any))
+	  (org-lint--generate-reports (current-buffer) checkers)
+        (org-lint--display-reports (current-buffer) checkers)
+        (message "orglink linting process completed"))))
 
 ;;; _
 (provide 'orglink)
