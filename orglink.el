@@ -9,8 +9,8 @@
 
 ;; Package-Requires: (
 ;;     (emacs "25.1")
-;;     (compat "29.1.3.4")
-;;     (org "9.5")
+;;     (compat "29.1.4.1")
+;;     (org "9.6.5")
 ;;     (seq "2.23"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
