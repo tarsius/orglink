@@ -53,6 +53,7 @@
 
 (require 'org)
 (require 'org-element)
+(require 'org-lint)
 
 (defvar hl-todo-keyword-faces)
 (defvar outline-minor-mode)
@@ -264,6 +265,18 @@ On the links the following commands are available:
             nil t)
            (setq pos (match-beginning 0))
            (goto-char pos)))))
+
+;;;###autoload
+(defun orglink-lint ()
+  "Check current buffer for mistakes in links."
+  (interactive)
+  (message "Linting links...")
+  (org-lint--display-reports
+   (current-buffer)
+   (cl-remove-if-not (lambda (c)
+                       (assoc-string 'link (org-lint-checker-categories c)))
+                     org-lint--checkers))
+  (message "Linting links...done"))
 
 ;;; _
 (provide 'orglink)
