@@ -7,6 +7,7 @@ ELCS  = $(ELS:.el=.elc)
 
 DEPS  = compat
 DEPS += org/lisp
+DEPS += seq
 
 EMACS      ?= emacs
 EMACS_ARGS ?=
