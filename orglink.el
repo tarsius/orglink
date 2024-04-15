@@ -3,7 +3,7 @@
 ;; Copyright (C) 2004-2022 Free Software Foundation, Inc.
 ;; Copyright (C) 2013-2024 Jonas Bernoulli
 
-;; Author: Jonas Bernoulli <jonas@bernoul.li>
+;; Author: Jonas Bernoulli <emacs.orglink@jonas.bernoulli.dev>
 ;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypermedia
 

@@ -12,7 +12,7 @@ To use enable ~global-orglink-mode~ and customize
   [[Code]]
   [[Code][start of code]]
   [[define-derived-mode orglink-mode][orglink-mode]]
-  <mailto:jonas@bernoul.li>
+  <mailto:emacs.orglink@jonas.bernoulli.dev>
   man:info
   <info:man>
   https://github.com/tarsius/orglink
