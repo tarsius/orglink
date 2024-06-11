@@ -147,14 +147,10 @@ On the links the following commands are available:
          (kill-local-variable 'font-lock-unfontify-region-function)
          (kill-local-variable 'org-mouse-map)))
   (when font-lock-mode
-    (if (and (fboundp 'font-lock-flush)
-             (fboundp 'font-lock-ensure))
-        (save-restriction
-          (widen)
-          (font-lock-flush)
-          (font-lock-ensure))
-      (with-no-warnings
-        (font-lock-fontify-buffer)))))
+    (save-restriction
+      (widen)
+      (font-lock-flush)
+      (font-lock-ensure))))
 
 ;;;###autoload
 (define-globalized-minor-mode global-orglink-mode
