@@ -8,7 +8,7 @@
 ;; Keywords: hypermedia
 
 ;; Package-Requires: (
-;;     (emacs "25.1")
+;;     (emacs "26.1")
 ;;     (compat "30.0.0.0")
 ;;     (org "9.7.4")
 ;;     (seq "2.24"))
