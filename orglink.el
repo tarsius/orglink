@@ -155,9 +155,9 @@ On the links the following commands are available:
 
 ;;;###autoload
 (define-globalized-minor-mode global-orglink-mode
-  orglink-mode turn-on-orglink-mode-if-desired)
+  orglink-mode orglink-mode--turn-on)
 
-(defun turn-on-orglink-mode-if-desired ()
+(defun orglink-mode--turn-on ()
   (cond ((derived-mode-p 'org-mode)
          ;; `org-mode' derives from `outline-mode', which derives
          ;; from `text-mode'.  Only warn if `org-mode' itself is
