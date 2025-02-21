@@ -1,7 +1,7 @@
 ;;; orglink.el --- Use Org Mode links in other modes  -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2004-2022 Free Software Foundation, Inc.
-;; Copyright (C) 2013-2024 Jonas Bernoulli
+;; Copyright (C) 2013-2025 Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <emacs.orglink@jonas.bernoulli.dev>
 ;; Homepage: https://github.com/tarsius/orglink
