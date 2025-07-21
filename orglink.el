@@ -147,11 +147,7 @@ On the links the following commands are available:
          (kill-local-variable 'org-link-descriptive)
          (kill-local-variable 'font-lock-unfontify-region-function)
          (kill-local-variable 'org-mouse-map)))
-  (when font-lock-mode
-    (save-restriction
-      (widen)
-      (font-lock-flush)
-      (font-lock-ensure))))
+  (font-lock-flush))
 
 ;;;###autoload
 (define-globalized-minor-mode global-orglink-mode
