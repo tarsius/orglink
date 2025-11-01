@@ -7,12 +7,12 @@
 ;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypermedia
 
-;; Package-Version: 1.2.7
+;; Package-Version: 1.2.8
 ;; Package-Requires: (
-;;     (emacs "26.1")
+;;     (emacs  "26.1")
 ;;     (compat "30.1")
-;;     (org "9.7")
-;;     (seq "2.24"))
+;;     (org     "9.7")
+;;     (seq     "2.24"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
