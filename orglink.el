@@ -10,7 +10,7 @@
 ;; Package-Version: 1.2.9
 ;; Package-Requires: (
 ;;     (emacs  "26.1")
-;;     (compat "30.1")
+;;     (compat "31.0")
 ;;     (org     "9.7")
 ;;     (seq     "2.24"))
 
@@ -79,7 +79,7 @@ Changes to this variable only become effective after restarting
   :group 'orglink
   :safe (lambda (v)
           (and (listp v)
-               (seq-every-p #'symbolp v)))
+               (all #'symbolp v)))
   :type '(set :greedy t
               (const :tag "Double bracket links" bracket)
               (const :tag "Angular bracket links" angle)
