@@ -11,6 +11,7 @@
 ;; Package-Requires: (
 ;;     (emacs  "26.1")
 ;;     (compat "31.0")
+;;     (llama   "1.0")
 ;;     (org     "9.7")
 ;;     (seq     "2.24"))
 
@@ -50,6 +51,7 @@
 ;;; Code:
 
 (require 'compat)
+(require 'llama)
 (require 'seq)
 
 (require 'org)
@@ -77,9 +79,8 @@ plain    Plain links in normal text like http://orgmode.org.
 Changes to this variable only become effective after restarting
 `orglink-mode', which has to be done separately in each buffer."
   :group 'orglink
-  :safe (lambda (v)
-          (and (listp v)
-               (all #'symbolp v)))
+  :safe (##and (listp %)
+               (all #'symbolp %))
   :type '(set :greedy t
               (const :tag "Double bracket links" bracket)
               (const :tag "Angular bracket links" angle)
@@ -252,7 +253,7 @@ On the links the following commands are available:
            (re-search-forward
             (concat "^" outline-regexp
                     (if (bound-and-true-p hl-todo-mode)
-                        (regexp-opt (mapcar 'car hl-todo-keyword-faces))
+                        (regexp-opt (mapcar #'car hl-todo-keyword-faces))
                       "\\(?:\\sw+\\)")
                     "?" s)
             nil t)
@@ -266,8 +267,7 @@ On the links the following commands are available:
   (message "Linting links...")
   (org-lint--display-reports
    (current-buffer)
-   (cl-remove-if-not (lambda (c)
-                       (assoc-string 'link (org-lint-checker-categories c)))
+   (cl-remove-if-not (##assoc-string 'link (org-lint-checker-categories %))
                      org-lint--checkers))
   (message "Linting links...done"))
 
