@@ -9,7 +9,7 @@
 
 ;; Package-Version: 1.2.9
 ;; Package-Requires: (
-;;     (emacs  "26.1")
+;;     (emacs  "28.1")
 ;;     (compat "31.0")
 ;;     (llama   "1.0")
 ;;     (org     "9.7")
