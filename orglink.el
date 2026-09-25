@@ -9,11 +9,10 @@
 
 ;; Package-Version: 1.3.1
 ;; Package-Requires: (
-;;     (emacs  "28.1")
+;;     (emacs  "29.1")
 ;;     (compat "31.0")
 ;;     (llama   "1.0")
-;;     (org     "9.8")
-;;     (seq     "2.24"))
+;;     (org     "9.8"))
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -52,7 +51,6 @@
 
 (require 'compat)
 (require 'llama)
-(require 'seq)
 
 (require 'org)
 (require 'org-element)

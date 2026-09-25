@@ -8,7 +8,6 @@ ELCS  = $(ELS:.el=.elc)
 DEPS  = compat
 DEPS += llama
 DEPS += org/lisp
-DEPS += seq
 
 LOAD_PATH ?= $(addprefix -L ../,$(DEPS))
 LOAD_PATH += -L .
