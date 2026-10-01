@@ -7,10 +7,10 @@
 ;; Homepage: https://github.com/tarsius/orglink
 ;; Keywords: hypermedia
 
-;; Package-Version: 1.3.1
+;; Package-Version: 1.3.2
 ;; Package-Requires: (
 ;;     (emacs  "29.1")
-;;     (compat "31.0")
+;;     (compat "31.1")
 ;;     (llama   "1.0")
 ;;     (org     "9.8"))
 
