@@ -22,3 +22,4 @@ To use enable ~global-orglink-mode~ and customize
 #+html: <a href="https://github.com/tarsius/orglink/actions/workflows/compile.yml"><img alt="Compile" src="https://github.com/tarsius/orglink/actions/workflows/compile.yml/badge.svg"/></a>
 #+html: <a href="https://snapshots.melpa.org/#/orglink"><img alt="MELPA Snapshots" src="https://snapshots.melpa.org/packages/orglink-badge.svg"/></a>
 #+html: <a href="https://releases.melpa.org/#/orglink"><img alt="MELPA Releases" src="https://releases.melpa.org/packages/orglink-badge.svg"/></a>
+#+html: <a href="https://emacsair.me/human"><img alt="human made" src="https://emacsair.me/assets/badges/human.svg"/></a>
